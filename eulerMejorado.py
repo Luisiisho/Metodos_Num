@@ -11,9 +11,6 @@ lista_ea = []#Lista para todos los valores error absoluto
 lista_er = []#Lista para todos los valores error relativo
 lista_ep = []#Lista para todos los valores error porcentual
 
-#Lista de las listas, para generar la tabla --- Pendiente
-#tabla = [lista_xn, lista_yn, lista_m, lista_yAsterisk, lista_mAsterisk, lista_y, lista_ea, lista_er, lista_ep] ---- Pendiente
-
 #Redondeo de cifras decimales
 redondeo = 6#digítos decimales
 
@@ -24,7 +21,19 @@ def calcularErrores():
         lista_er.append(round(lista_ea[-1] / abs(y), redondeo))#Error Relativo
         lista_ep.append(round(lista_er[-1]*100, redondeo))#Error Porcentual
 
-def procesarDatos(datos):
+def eulerMejorado(datos):
+    #Eliminamos los valores anteriores de las listas
+    #Limpiamos las listas        
+    lista_xn.clear()
+    lista_yn.clear()
+    lista_m.clear()
+    lista_yAsterisk.clear()
+    lista_mAsterisk.clear()
+    lista_y.clear()
+    lista_ea.clear()
+    lista_er.clear()
+    lista_ep.clear()
+
     #Añadimos los elementos que ya tenemos a sus respectivas listas
     lista_xn.append(round(datos["x0"],redondeo))#El primer xn, que sería x0
     lista_yn.append(round(datos["y0"],redondeo))#El primer yn, que sería y0
@@ -56,7 +65,8 @@ def procesarDatos(datos):
         
         #Ahora calculamos los valores reales de la función y(x) (solución de la ed)
         variables = {'x': lista_xn[-1], 'y': 0}#Sustituimos xn actual, yn es lo que se busca calcular
-        lista_y.append(round(evaluar_expresion(datos["y(x)"], variables), redondeo))#Calculamos y(x) y guardamos en su lista
+        lista_y.append(round(evaluar_expresion(datos["y(x)"], variables), redondeo))#Calculamos y(x) y guardamos en su lista    
     
     #Calculamos los errores
-    calcularErrores()
+    calcularErrores()    
+    
