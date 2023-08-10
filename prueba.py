@@ -1,3 +1,4 @@
+#Como usar sympyfy
 from sympy import symbols, sympify
 
 def evaluar_expresion(expresion, variables):

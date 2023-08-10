@@ -75,17 +75,17 @@ def rungeKutta(datos):
 
 def limpiarListas():
     #Limpiamos listas de Ks
-    lista_k1.clear
-    lista_k2.clear
-    lista_k3.clear
-    lista_k4.clear
+    lista_k1.clear()
+    lista_k2.clear()
+    lista_k3.clear()
+    lista_k4.clear()
     
     #Limpiamos listas de errores
-    lista_ea.clear
-    lista_er.clear
-    lista_ep.clear
+    lista_ea.clear()
+    lista_er.clear()
+    lista_ep.clear()
 
     #Lo demás
-    lista_xn.clear
-    lista_yn.clear
-    lista_y.clear
+    lista_xn.clear()
+    lista_yn.clear()
+    lista_y.clear()
