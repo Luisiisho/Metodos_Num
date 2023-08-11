@@ -1,38 +1,13 @@
-from expresiones import*
+#Euler Mejorado
+from subrutinas import lista_xn, lista_yn, lista_y, redondeo
+from subrutinas import lista_m, lista_yAsterisk, lista_mAsterisk
+from subrutinas import lista_ea, lista_er, lista_ep
+from subrutinas import evaluar_expresion, calcularErrores, limpiarListas 
 
-#Método Euler Mejorado
-lista_xn = []#Lista para todos los valores de xn
-lista_yn = []#Lista para todos los valores de yn
-lista_m = []#Lista para todos los valores de f(xn, yn)
-lista_yAsterisk = []#Lista para todos los valores de y*n+1
-lista_mAsterisk = []##Lista para todos los valores de f(xn+1, y*n+1)
-lista_y = []#Lista para todos los valores reales de la función y (solución de la ed)
-lista_ea = []#Lista para todos los valores error absoluto
-lista_er = []#Lista para todos los valores error relativo
-lista_ep = []#Lista para todos los valores error porcentual
-
-#Redondeo de cifras decimales
-redondeo = 6#digítos decimales
-
-def calcularErrores():
-    "Calculamos los errores"
-    for yn, y in zip(lista_yn, lista_y):
-        lista_ea.append(round(abs(y - yn), redondeo))#Error Absoluto    
-        lista_er.append(round(lista_ea[-1] / abs(y), redondeo))#Error Relativo
-        lista_ep.append(round(lista_er[-1]*100, redondeo))#Error Porcentual
-
+#Aquí desarrollamos el método
 def eulerMejorado(datos):
-    #Eliminamos los valores anteriores de las listas
-    #Limpiamos las listas        
-    lista_xn.clear()
-    lista_yn.clear()
-    lista_m.clear()
-    lista_yAsterisk.clear()
-    lista_mAsterisk.clear()
-    lista_y.clear()
-    lista_ea.clear()
-    lista_er.clear()
-    lista_ep.clear()
+    #Borramos valores previos
+    limpiarListas("eulerMejorado")
 
     #Añadimos los elementos que ya tenemos a sus respectivas listas
     lista_xn.append(round(datos["x0"],redondeo))#El primer xn, que sería x0

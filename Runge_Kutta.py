@@ -1,24 +1,12 @@
-#Rugen-Kutta
-from expresiones import*
-from eulerMejorado import redondeo, calcularErrores
-
-#Listas de Kn
-lista_k1 = []
-lista_k2 = []
-lista_k3 = []
-lista_k4 = []
-
-lista_xn = [] #Lista para las xn
-lista_yn = [] #Lista para las yn
-lista_y = []  #Lista para los valores reales de y
-
-#Listas de errores
-lista_ea = [] #Error absoluto
-lista_er = [] #Error relativo
-lista_ep = [] #Error porcentual
+#Rugen Kutta
+from subrutinas import lista_xn, lista_yn, lista_y, redondeo
+from subrutinas import lista_k1, lista_k2, lista_k3, lista_k4
+from subrutinas import lista_ea, lista_er, lista_ep
+from subrutinas import evaluar_expresion, calcularErrores, limpiarListas 
 
 def rungeKutta(datos):
-    limpiarListas() #Eliminamos datos previos
+    #Borramos datos previos
+    limpiarListas("rungeKutta")
     
     #Guardamos los datos ya obtenidos
     lista_xn.append(round(datos["x0"], redondeo)) #x0 a su lista xn
@@ -27,7 +15,7 @@ def rungeKutta(datos):
     iteraciones = round(datos["aprox"] + datos["h"], redondeo)
 
     #Mientras xn todavía no llegue a la aproximación
-    while lista_xn[-1] != iteraciones:
+    while lista_xn[-1] < iteraciones:
         #Calculamos k1
         variables = {'x': lista_xn[-1], 'y': lista_yn[-1]} #Sustituimos xn y yn
         k1 = evaluar_expresion(datos["y'"], variables) #Calculamos f(xn, yn)
@@ -70,22 +58,4 @@ def rungeKutta(datos):
     lista_yn.pop() #La última yn guardada
     lista_xn.pop() #El último xn guardado
     #Calculamos los errores
-    calcularErrores()   
-
-
-def limpiarListas():
-    #Limpiamos listas de Ks
-    lista_k1.clear()
-    lista_k2.clear()
-    lista_k3.clear()
-    lista_k4.clear()
-    
-    #Limpiamos listas de errores
-    lista_ea.clear()
-    lista_er.clear()
-    lista_ep.clear()
-
-    #Lo demás
-    lista_xn.clear()
-    lista_yn.clear()
-    lista_y.clear()
+    calcularErrores()
